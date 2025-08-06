@@ -94,18 +94,18 @@
           <div class="row">
             <div class="col-md-9 mx-auto">
               <div class="contact-form">
-                <form action="">
+                <form onsubmit="sendEmail(event)">
                   <div>
-                    <input type="text" placeholder="Full Name ">
+                    <input name="full_name" type="text" placeholder="Full Name" required>
                   </div>
                   <div>
-                    <input type="text" placeholder="Phone Number">
+                    <input name="phone" type="text" placeholder="Phone Number" required>
                   </div>
                   <div>
-                    <input type="email" placeholder="Email Address">
+                    <input name="email" type="email" placeholder="Email Address" required>
                   </div>
                   <div>
-                    <input type="text" placeholder="Message" class="input_message">
+                    <textarea name="message" placeholder="Message" class="input_message" required></textarea>
                   </div>
                   <div class="d-flex justify-content-center">
                     <button type="submit" class="btn_on-hover">
@@ -150,7 +150,7 @@
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
-                +01 1234567890
+                +1 636 778 8775
               </p>
             </div>
             <div>
@@ -267,6 +267,15 @@
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init('iwOJSeHly4J4p-g4i');
+    function sendEmail(e) {
+      e.preventDefault();
+      emailjs.sendForm('service_g0dsevp', 'template_o0euu5n', e.target)
+        .then(() => alert('Message sent!'), () => alert('Failed to send.'));
+    }
+  </script>
   <!-- owl carousel script 
     -->
   <script type="text/javascript">
@@ -292,3 +301,4 @@
 </body>
 
 </html>
+``` 
